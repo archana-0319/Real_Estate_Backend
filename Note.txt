@@ -115,7 +115,7 @@ HTTP API Requests/URL
 
 ----------------------------------------------------------------
 
-=> For Login/SignIn -> http://localhost:8081/user//v1/login 
+=> For Login/SignIn -> http://localhost:8081/user/v1/login 
     {
         "email" : "ee@gmail.com",
         "password" : "12345678"
@@ -249,3 +249,7 @@ Transactions and History
     price, size, views click on the save and continue
 7)http://localhost:3000/location
 
+
+
+----------------------------------------------
+https://real-estate-backend-i7ci.onrender.com 
