@@ -1,5 +1,23 @@
+                -------------------- Setting the development environment --------------------
 
---------------- Frontend --------------------------
+Setting up a development environment for both frontend and backend development involves several steps, 
+including installing the necessary software and tools.
+
+Node.js (backend) and React.js (frontend) development
+
+1. Node.js Installation
+2. Package Manager (npm)
+	Create a Node.js Project 
+	Install Frameworks
+	Database Setup
+3. Frontend (React.js) Environment Setup
+	Create a React App
+
+development environment ready for both frontend (React.js) and backend (Node.js) development 
+
+
+                            ---------------------- Frontend --------------------------
+
 Frontend part consists of HTML5 and Bootstrap4 for layouting purpose alongside jQuery library as a dependency manager. The frontend code resides inside `public
 frontend project structure for real estate
 ```
@@ -27,7 +45,18 @@ realEstateFrontend(FRONTEND PROJECT NAME)
 
 
 
----------------------------- Backend -----------------------------
+                            ---------------------------- Backend -----------------------------
+
+                            
+Creating a real estate website involves several data models
+
+Data model representing properties for sold/unsold. It should include details such as property type like 
+PPD ID, Property, Cantact details, price, area, views, 
+
+User Authentication
+Transactions and History
+......
+.......
 
 Backend is built using ExpressJS framework with MongoDB database to store the information about users and their properties.
 Backend is built using Express framework of node js which provides the following features:
@@ -73,7 +102,7 @@ project_name (REAL ESTATE)
 ```
 
 HTTP API Requests/URL
-================================ For User ============ 
+    ================================ For User ================================
 
 => To register / SignUp : http://localhost:8081/user/v1/register        
     {
@@ -131,7 +160,7 @@ HTTP API Requests/URL
 
 => When we try to login with same Email id but different password 
 
-http://localhost:8081/user//v1/login
+http://localhost:8081/user/v1/login
 
     {
         "email" : "ee@gmail.com",
@@ -144,7 +173,7 @@ http://localhost:8081/user//v1/login
 
 =>  When we trying to login with different credentials
 
-http://localhost:8081/user//v1/login
+http://localhost:8081/user/v1/login
 {
     "email" : "e@gmail.com",
     "password" : "12345"
@@ -176,6 +205,11 @@ In body need to provide property_details
     ...
 }
 
+we have to give Authorization details then only property_details will be added otherwise we will get( Authenticate failed status)
+key = Authorization
+Value  = (Token VAlue ) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpZCI6IjY1MTU0MGM2ZGM3YmJiNDE2MzU1YzQwYSIsInVzZXJpZCI6IjA2UFBEMTAxIiwiaWF0IjoxNjk1ODkxODQ5LCJleHAiOjE2OTU5NzgyNDl9._gd-_uE2cbP6xTeVvWfCOP87ofgMbqblTGIYht8pr8Y
+            This token value we will get while SignIn successfully
+
 ----------------------------------
 
 => to get the property_details  
@@ -185,11 +219,11 @@ In body need to provide property_details
 key = Authorization
 Value  = (Token VAlue ) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpZCI6IjY1MTU0MGM2ZGM3YmJiNDE2MzU1YzQwYSIsInVzZXJpZCI6IjA2UFBEMTAxIiwiaWF0IjoxNjk1ODkxODQ5LCJleHAiOjE2OTU5NzgyNDl9._gd-_uE2cbP6xTeVvWfCOP87ofgMbqblTGIYht8pr8Y
             This token value we will get while SignIn successfully 
+
+
 When we want to fetch the data 
-
-
-http://localhost:8081/prop/getproperty ? id  / 
-http://localhost:8081/prop/getproperty?65154149dc7bbb416355c410
+http://localhost:8081/prop/getproperty ? id  
+http://localhost:8081/prop/getproperty ? 65154149dc7bbb416355c410
 
 {
     "message": "Property details fetched successfully",
@@ -197,37 +231,9 @@ http://localhost:8081/prop/getproperty?65154149dc7bbb416355c410
 }
 
 
------------------------ Frontend --------------------------------
-=> for frontend
-https://github.com/pratik-choudhari/RealEstateProjectFrontend.git
+    ----------------------------- Frontend -------------------------------
+=> For frontend
 
-
-
-Setting up a development environment for both frontend and backend development involves several steps, including installing the necessary software and tools
-
-Node.js (backend) and React.js (frontend) development
-
-1. Node.js Installation
-2. Package Manager (npm)
-	Create a Node.js Project 
-	Install Frameworks
-	Database Setup
-3. Frontend (React.js) Environment Setup
-	Create a React App
-
-development environment ready for both frontend (React.js) and backend (Node.js) development 
-
-
-Creating a real estate website involves several data models
-
-Data model representing properties for sold/unsold. It should include details such as property type like 
-PPD ID, Property, Cantact details, price, area, views, 
-
-User Authentication
-Transactions and History
-......
-.......
-........
 
 1) http://localhost:3000/ 
     Redirecting to the SignIn Page (if the user is not registered) 
@@ -247,9 +253,9 @@ Transactions and History
 6) http://localhost:3000/details
     Some more details we need to add like 
     price, size, views click on the save and continue
-7)http://localhost:3000/location
+7)http://localhost:3000/location 
 
 
 
 ----------------------------------------------
-https://real-estate-backend-i7ci.onrender.com 
+render.com (backend) ->   https://real-estate-backend-i7ci.onrender.com 

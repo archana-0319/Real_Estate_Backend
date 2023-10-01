@@ -54,7 +54,6 @@ userRouter.post("/v1/register",async (req, res) => {
         })
     })
 
-
 })
 
 

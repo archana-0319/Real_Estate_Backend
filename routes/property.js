@@ -6,8 +6,6 @@ const multer = require("multer");
 const path = require("path");
 
 
-
-
 //  Giving path and file name  for newly added file in multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -20,12 +18,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
-
-
 ////To get property list on home page frontend
 
-
-propertyRouter.get("/v1/getproperty", auth, (req, res) => {
+propertyRouter.get("/getproperty", auth, (req, res) => {
+    console.log('Getting the properties')
 
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
@@ -46,14 +42,7 @@ propertyRouter.get("/v1/getproperty", auth, (req, res) => {
 })
 
 
-
-
-
-
-
 //Get API for search
-
-
 
 propertyRouter.get("/v1/getproperty/:id",auth,(req,res)=>{
     const id = req.params.id.toUpperCase();
@@ -78,17 +67,13 @@ propertyRouter.get("/v1/getproperty/:id",auth,(req,res)=>{
 })
 
 
-
-
-
-
 ///post API to Add New Property
 
-propertyRouter.post("/v1/addproperty", auth, upload.single("propertyimage"), async (req, res) => {
+propertyRouter.post("/addproperty", auth, upload.single("propertyimage"), async (req, res) => {
 
     console.log("reached post")
     let newppdid = 0; // it will store digit of last inserted of ppd_id
-    let ppd_id; // 
+    let ppd_id; 
 
     // This function will return the last document inserted into the DB
     const existingProperty = await Property.findOne({}, {}, { sort: { _id: -1 } }, function (err, post) {
@@ -106,23 +91,23 @@ propertyRouter.post("/v1/addproperty", auth, upload.single("propertyimage"), asy
         ppd_id = "PPD" + (parseInt(newppdid) + 1);  // increment for new insert
 
     } else {
-        ppd_id = "PPD" + 1000; // if there is not any previous  property in DB
+        ppd_id = "PPD" + 1000; // if there is no any previous  property in DB
     }
 
     const data = req.body;  // need to provide data in body
 
     const views = parseInt(Math.random() * 30);
     const daysleft = parseInt(Math.random() * 40);
-    const propertyData = new Property({ //add new property
+    const propertyData = new Property({                 //add new property
 
-        user: req.id,     // get id from token passed during auth
-        unique_id: req.unique_id,   // get id from token auth
+        user: req.id,                  // get id from token passed during authen
+        unique_id: req.unique_id,     // get id from token auth
         ppdid: ppd_id,
         views: views,
         daysleft: daysleft,
         status: "unsold",
 
-        image: req.file.filename, // coming from multer
+        image: req.file.filename,    // coming from multer
         property_type: data.property_type,
         price: data.price,
         property_age: data.property_age,
@@ -181,15 +166,6 @@ propertyRouter.post("/v1/addproperty", auth, upload.single("propertyimage"), asy
 })
 
 
-
-
-
-
-
-
-
-
-
 propertyRouter.put("/v1/updateproperty/:id",upload.single("propertyimage"), async (req, res) => {
 console.log("update")
     try {
@@ -217,16 +193,6 @@ console.log("update")
 })
 
 
-
-
-
-
-
-
-
-
-
-
 ///API called when sold button pressed
 
 propertyRouter.patch("/v1/sold/:id", auth, (req, res) => {
@@ -243,11 +209,6 @@ propertyRouter.patch("/v1/sold/:id", auth, (req, res) => {
         })
     })
 })
-
-
-
-
-
 
 
 propertyRouter.delete("/v1/:id", (req, res) => {
